@@ -17,7 +17,7 @@ jobs:
     
     -name: copy-google-spreadsheet-api-credentials.json
      env:
-         SPREADSHEET_SECRETS: ${{secrets.GOOGLE_SPREADSHEET_API_SECRETS}}
+       SPREADSHEET_SECRETS: ${{secrets.GOOGLE_SPREADSHEET_API_SECRETS}}
      run: echo $SPREADSHEET_SECRETS | base64 --decode --ignore-garbage > ./credentials.json
     
     - name: run-npm-install-on-container
