@@ -5,3 +5,9 @@ services:
         volumes: 
             - ./:/workspace
         tty: true
+        environment: 
+            HEALTHCAREINPUT_BASEURL: ${HEALTHCAREINPUT_BASEURL}
+            SPREADSHEET_ID: ${SPREADSHEET_ID}
+            FORMDATASHEET_ID: ${FORMDATASHEET_ID}
+            USERMASTERSHEET_ID: ${USERMASTERSHEET_ID}
+            WEBHOOK_URL: ${WEBHOOK_URL}
