@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '00 7 * * *' #utcなので9時間マイナスで日本時間になる
+    - cron: '40 7 * * *' #utcなので9時間マイナスで日本時間になる
     # - cron: '00 7 * * 1-5 ' 平日16時
 
 jobs:
