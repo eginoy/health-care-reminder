@@ -14,7 +14,10 @@ jobs:
     
     - name: run-compose
       run: docker-compose up -d --build
-
+    
+    - name: run-npm-install-on-container
+      run: docker-compose exec -T reminder npm install
+      
     - name: run-reminder
       run: docker-compose exec -T reminder node src/index.js
 
