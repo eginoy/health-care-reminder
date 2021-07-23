@@ -16,7 +16,7 @@ jobs:
       run: docker-compose up -d --build
 
     - name: run-reminder
-      run: docker-compose exec reminder node src/index.js
+      run: docker-compose exec -T reminder node src/index.js
 
     - name: stop-containers
       if: always()
