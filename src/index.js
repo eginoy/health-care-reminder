@@ -102,9 +102,5 @@ function getTodayFormData(formData){
 
 function remindHealthCare(webhookURL,remindMessage){
     const postData = {text: remindMessage};
-    axios.post(webhookURL,postData).then(res => {
-        console.log(res);
-    },err => {
-        console.log(err);
-    });
+    axios.post(webhookURL,postData);
 }
