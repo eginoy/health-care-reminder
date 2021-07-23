@@ -24,6 +24,12 @@ jobs:
       run: docker-compose exec -T reminder npm install
       
     - name: run-reminder
+      env:
+       HEALTHCAREINPUT_BASEURL: ${{secrets.HEALTHCAREINPUT_BASEURL}}
+       SPREADSHEET_ID: ${{secrets.SPREADSHEET_ID}}
+       FORMDATASHEET_ID: ${{secrets.FORMDATASHEET_ID}}
+       USERMASTERSHEET_ID: ${{secrets.USERMASTERSHEET_ID}}
+       WEBHOOK_URL: ${{secrets.WEBHOOK_URL}}
       run: docker-compose exec -T reminder node src/index.js
 
     - name: delete-credentials
