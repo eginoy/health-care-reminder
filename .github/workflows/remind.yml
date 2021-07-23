@@ -10,12 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    
     - name: run-compose
-      run: docker-compose -f "docker-compose.yml" up -d --build
+      run: docker-compose up -d --build
 
     - name: run-reminder
       run: docker-compose exec reminder node src/index.js
 
     - name: stop-containers
       if: always()
-      run: docker-compose -f "docker-compose.yml" down
+      run: docker-compose down
