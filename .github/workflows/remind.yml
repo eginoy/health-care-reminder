@@ -1,0 +1,21 @@
+name: run-remind
+
+on:
+  schedule:
+    - cron: '00 16 * * *'
+    # - cron: '00 16 * * 1-5 ' 平日16時
+
+jobs:
+  docker:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    - name: Start containers
+      run: docker-compose -f "docker-compose.yml" up -d --build
+
+    - name: Run Reminder
+      run: docker-compose exec reminder node src/index.js
+
+    - name: Stop containers
+      if: always()
+      run: docker-compose -f "docker-compose.yml" down
