@@ -15,11 +15,19 @@ jobs:
     - name: run-compose
       run: docker-compose up -d --build
     
+    -name: copy-google-spreadsheet-api-credentials.json
+     env:
+         SPREADSHEET_SECRETS: ${{secrets.GOOGLE_SPREADSHEET_API_SECRETS}}
+     run: echo $SPREADSHEET_SECRETS | base64 --decode --ignore-garbage > ./credentials.json
+    
     - name: run-npm-install-on-container
       run: docker-compose exec -T reminder npm install
       
     - name: run-reminder
       run: docker-compose exec -T reminder node src/index.js
+
+    - name: delete-credentials.json
+      run: rm -rf ./credentials.json
 
     - name: stop-containers
       if: always()
