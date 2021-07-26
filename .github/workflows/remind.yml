@@ -24,10 +24,7 @@ jobs:
       env:
        SPREADSHEET_SECRETS: ${{secrets.GOOGLE_SPREADSHEET_API_SECRETS}}
       run: echo $SPREADSHEET_SECRETS | base64 --decode --ignore-garbage > ./credentials.json
-    
-    - name: run-npm-install-on-container
-      run: docker-compose exec -T reminder npm install
-      
+
     - name: run-reminder
       run: docker-compose exec -T reminder node src/index.js
 
