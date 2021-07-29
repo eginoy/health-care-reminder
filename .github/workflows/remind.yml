@@ -2,8 +2,8 @@ name: run-reminder
 
 on:
   workflow_dispatch:
-  schedule:
-   - cron: '00 7 * * 1-5' # 平日16時(github actions実行時間がUTCなので9時間マイナスで日本時間になる)
+  # schedule:
+  #  - cron: '00 7 * * 1-5' # 平日16時(github actions実行時間がUTCなので9時間マイナスで日本時間になる)
 
 jobs:
   build:
