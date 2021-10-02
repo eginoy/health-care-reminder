@@ -1,6 +1,7 @@
 require('dotenv').config();
 const {GoogleSpreadsheet} = require('google-spreadsheet');
 const axios = require('axios');
+const utils = require('../src/utils');
 
 const spreadSheet_ID = process.env.SPREADSHEET_ID;
 const userMasterSheet_ID = process.env.USERMASTERSHEET_ID;
@@ -18,6 +19,9 @@ class User{
 }
 
 async function main(){
+    const holidays = await utils.getHolidays(utils.holidaysAPI);
+    if(utils.isHoliday(new Date(),holidays)) return;
+
     const userMaster = await getUserMaster();
     const unCompletedUsers = await getUncompletedUsers(userMaster);
     const remindMessage = createReminderMessage(unCompletedUsers,healthCareInputBaseURL);
